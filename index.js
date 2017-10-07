@@ -33,5 +33,4 @@ module.exports = router(
   get('/getRandomUser/:forUserId', getRandomUser),
   handleErrors(get('/refreshGraphcoolUsers', refreshGraphcoolUsers)),
   handleErrors(get('/updateUserLastActiveAt/:gcId', updateUserLastActiveAt)),
-  handleErrors(get('/updateUserLastInvitedAt/:gcId', updateUserLastInvitedAt)),
-)
+  handleErrors(get('/updateUserLastInvitedAt/:gcId', updateUserLastInvitedAt)))

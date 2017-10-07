@@ -4,9 +4,9 @@ const { router, get } = require('microrouter')
 const User = require('./src/User')
 const connectDB = require('./src/connectDB')
 
-const refreshGraphcoolUsers = require('./services/refreshGraphcoolUsers')
 const getUsers = require('./services/getUsers')
 const getRandomUser = require('./services/getRandomUser')
+const refreshGraphcoolUsers = require('./services/refreshGraphcoolUsers')
 const updateUserLastActiveAt = require('./services/updateUserLastActiveAt')
 const updateUserLastInvitedAt = require('./services/updateUserLastInvitedAt')
 

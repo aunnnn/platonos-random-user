@@ -1,5 +1,6 @@
 const { send } = require('micro')
 const { router, get } = require('microrouter')
+const cors = require('micro-cors')()
 
 const User = require('./src/User')
 const connectDB = require('./src/connectDB')
@@ -27,10 +28,12 @@ const serviceStatus = (req, res) => {
   })
 }
 
-module.exports = router(
+const handler = router(
   get('/', serviceStatus),
   get('/getUsers', getUsers),
   get('/getRandomUser/:forUserId', getRandomUser),
   handleErrors(get('/refreshGraphcoolUsers', refreshGraphcoolUsers)),
   handleErrors(get('/updateUserLastActiveAt/:gcId', updateUserLastActiveAt)),
   handleErrors(get('/updateUserLastInvitedAt/:gcId', updateUserLastInvitedAt)))
+
+module.exports = cors(handler)

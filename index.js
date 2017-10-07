@@ -23,7 +23,7 @@ const handleErrors = fn => async (req, res) => {
 
 const serviceStatus = (req, res) => {
   send(res, 200, {
-    status: 'Up and running :)',
+    status: 'Up and running :D',
   })
 }
 

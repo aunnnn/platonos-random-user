@@ -19,7 +19,6 @@ const ALL_USERS_QUERY = `
 
 const refreshGraphcoolUsers = async (req, res) => {
   const users = (await request(endpoint, ALL_USERS_QUERY)).allUsers
-  console.log('upserting new users...')
   for (let u of users) {
     await User.updateOne({ gc_id: u.id }, {
       $set: {

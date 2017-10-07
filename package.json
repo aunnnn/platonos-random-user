@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "micro",
+    "start": "micro -p 3003",
     "dev": "micro-dev"
   },
   "author": "aunnnn",

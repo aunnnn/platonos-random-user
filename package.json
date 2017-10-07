@@ -2,14 +2,16 @@
   "name": "platonos-random-user",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": ".micro/index.js",
   "scripts": {
     "start": "micro -p 3003",
-    "dev": "micro-dev"
+    "dev": "micro-dev",
+    "build": "async-to-gen --out-dir .micro ."
   },
   "author": "aunnnn",
   "license": "MIT",
   "dependencies": {
+    "async-to-gen": "^1.3.3",
     "graphql-request": "^1.4.0",
     "micro": "^9.0.0",
     "microrouter": "^2.2.3",

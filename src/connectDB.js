@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const connectDB = () => {
-  mongoose.connect('mongodb://localhost:27017/test-micro-db', {
+  mongoose.connect('mongodb://localhost:27017/platonos-random-user', {
     useMongoClient: true,
-    promiseLibrary: global.Promi
+    promiseLibrary: global.Promise,
   })
   const db = mongoose.connection
   db.on('error', (err) => {

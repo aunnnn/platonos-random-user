@@ -6,7 +6,7 @@
   "scripts": {
     "start": "micro -p 3003",
     "dev": "micro-dev",
-    "build": "async-to-gen --out-dir .micro ."
+    "build": "async-to-gen .  --ignore '/(node_modules|\\.micro)/.*' --out-dir .micro"
   },
   "author": "aunnnn",
   "license": "MIT",

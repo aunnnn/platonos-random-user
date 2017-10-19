@@ -2,7 +2,7 @@ const { send } = require('micro')
 const { GraphQLClient, request } = require('graphql-request')
 const User = require('../src/User')
 
-const endpoint = 'https://api.graph.cool/simple/v1/cj7xevxnc0yd20168ieas984x'
+const endpoint = ' https://api.graph.cool/simple/v1/cj8ypa9sx038s018686140dpr'
 
 const ALL_USERS_QUERY = `
   query AllUsers {
@@ -19,6 +19,19 @@ const ALL_USERS_QUERY = `
 
 const refreshGraphcoolUsers = async (req, res) => {
   const users = (await request(endpoint, ALL_USERS_QUERY)).allUsers
+  const userGcIds = users.map(u => u.id)
+
+  const beforeRemoveLength = await User.count({})
+  
+  // Remove user that's not in the real data.
+  await User.remove({ 
+    gc_id: {
+      $nin: userGcIds,
+    } 
+  })
+
+  const afterRemoveLength = await User.count({})
+
   for (let u of users) {
     await User.updateOne({ gc_id: u.id }, {
       $set: {
@@ -34,6 +47,8 @@ const refreshGraphcoolUsers = async (req, res) => {
   }  
   send(res, 200, {
     success: true,
+    numberOfDeletedInvalidUsers: beforeRemoveLength - afterRemoveLength,    
+    currentUserCount: afterRemoveLength,
     users: users,
   })
 }

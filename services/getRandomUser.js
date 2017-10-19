@@ -18,11 +18,12 @@ const getRandomUser = async (req, res) => {
     }
   }
 
-  const last2Days = dateLastNDays(2)
+  const last3Days = dateLastNDays(3)
 
+  // Logic = get all users that are active in last 3 days, then get the one that is invited longest time ago.
   const usersByLastInvitedAt = await User.findOne({
     lastActiveAt: {
-      $gte: last2Days,
+      $gte: last3Days,
     },
     gc_id: {
       $nin: [forUserId, ...excluded],

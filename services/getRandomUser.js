@@ -68,6 +68,9 @@ const getRandomUser = async (req, res) => {
       $limit: 1,
     }
   ])
+  let targetUser = null
+  if (usersByLastInvitedAt.length === 1) targetUser = usersByLastInvitedAt[0]
+
   // const usersByLastInvitedAt = await User.findOne({
   //   lastActiveAt: {
   //     $gte: last3Days,
@@ -77,7 +80,7 @@ const getRandomUser = async (req, res) => {
   //   }
   // }).sort({ lastInvitedAt: 1 })
   send(res, 200, {
-    user: usersByLastInvitedAt,
+    user: targetUser,
     excluded,
   })
 }

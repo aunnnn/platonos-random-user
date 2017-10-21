@@ -6,6 +6,7 @@ const User = require('./src/User')
 const connectDB = require('./src/connectDB')
 
 const getUsers = require('./services/getUsers')
+const getUserUsageData = require('./services/getUserUsageData')
 const getRandomUser = require('./services/getRandomUser')
 const refreshGraphcoolUsers = require('./services/refreshGraphcoolUsers')
 const updateUserLastActiveAt = require('./services/updateUserLastActiveAt')
@@ -31,6 +32,7 @@ const serviceStatus = (req, res) => {
 const handler = router(
   get('/', serviceStatus),
   get('/getUsers', getUsers),
+  get('/getUserUsageData', getUserUsageData),
   get('/getRandomUser/:forUserId', getRandomUser),
   handleErrors(get('/refreshGraphcoolUsers', refreshGraphcoolUsers)),
   handleErrors(get('/updateUserLastActiveAt/:gcId', updateUserLastActiveAt)),

@@ -2,7 +2,7 @@
   "name": "platonos-random-user",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": ".micro/index.js",
   "scripts": {
     "start": "micro -p 3003",
     "dev": "micro-dev",

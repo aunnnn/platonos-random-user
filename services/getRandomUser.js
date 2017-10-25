@@ -1,5 +1,6 @@
 
 const User = require('../src/User')
+const UserUsageData = require('../src/UserUsageData')
 const { send, json } = require('micro')
 
 const dateLastNDays = (n) => {
@@ -79,8 +80,14 @@ const getRandomUser = async (req, res) => {
   //     $nin: [forUserId, ...excluded],
   //   }
   // }).sort({ lastInvitedAt: 1 })
+
+  const usageData = await UserUsageData.findOne({
+    gc_id: forUserId
+  })
+
   send(res, 200, {
     user: targetUser,
+    requesterUsageData: usageData,
     excluded,
   })
 }

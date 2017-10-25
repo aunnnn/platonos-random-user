@@ -8,6 +8,10 @@ const userUsageDataSchema = Schema({
 
   lastActiveAt: Date,
   lastInvitedAt: Date,  
+  numberOfTopicsLeft: {
+    type: Number,
+    default: 5,
+  },
 })
 
 const initColl = () => {

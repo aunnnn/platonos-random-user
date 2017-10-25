@@ -5,9 +5,11 @@ const cors = require('micro-cors')()
 const User = require('./src/User')
 const connectDB = require('./src/connectDB')
 
-const getUsers = require('./services/getUsers')
-const getUserUsageData = require('./services/getUserUsageData')
+const debugUsers = require('./services/debugUsers')
+const debugUserUsageData = require('./services/debugUserUsageData')
+
 const getRandomUser = require('./services/getRandomUser')
+const getUsageData = require('./services/getUsageData')
 const refreshGraphcoolUsers = require('./services/refreshGraphcoolUsers')
 const updateUserLastActiveAt = require('./services/updateUserLastActiveAt')
 const updateUserLastInvitedAt = require('./services/updateUserLastInvitedAt')
@@ -31,9 +33,10 @@ const serviceStatus = (req, res) => {
 
 const handler = router(
   get('/', serviceStatus),
-  get('/getUsers', getUsers),
-  get('/getUserUsageData', getUserUsageData),
-  get('/getRandomUser/:forUserId', getRandomUser),
+  get('/debugUsers', debugUsers),
+  get('/debugUserUsageData', debugUserUsageData),
+  handleErrors(get('/getUsageData/:forUserId', getUsageData)),
+  handleErrors(get('/getRandomUser/:forUserId', getRandomUser)),
   handleErrors(get('/refreshGraphcoolUsers', refreshGraphcoolUsers)),
   handleErrors(get('/updateUserLastActiveAt/:gcId', updateUserLastActiveAt)),
   handleErrors(get('/updateUserLastInvitedAt/:gcId', updateUserLastInvitedAt)))

@@ -40,7 +40,7 @@ const handler = router(
   get('/', serviceStatus),
   get('/debugUsers', debugUsers),
   get('/debugUserUsageData', debugUserUsageData),
-  get('/reduceChatQuota/:forUserId', reduceChatQuota),  
+  // get('/reduceChatQuota/:forUserId', reduceChatQuota),  
   handleErrors(get('/getUsageData/:forUserId', getUsageData)),
   handleErrors(get('/getRandomUser/:forUserId', getRandomUser)),
   handleErrors(get('/refreshGraphcoolUsers', refreshGraphcoolUsers)),

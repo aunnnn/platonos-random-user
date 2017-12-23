@@ -15,7 +15,7 @@ const getUsageData = require('./services/getUsageData')
 const refreshGraphcoolUsers = require('./services/refreshGraphcoolUsers')
 const updateUserLastActiveAt = require('./services/updateUserLastActiveAt')
 const updateUserLastInvitedAt = require('./services/updateUserLastInvitedAt')
-const reduceChatQuota = require('./services/reduceChatQuota')
+// const reduceChatQuota = require('./services/reduceChatQuota')
 
 const cryptoChart = require('./services/cryptoCharts')
 

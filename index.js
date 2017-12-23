@@ -1,3 +1,5 @@
+const cryptoCharts = require('./services/cryptoCharts')
+
 const { send } = require('micro')
 const { router, get } = require('microrouter')
 const cors = require('micro-cors')()
@@ -13,6 +15,9 @@ const getUsageData = require('./services/getUsageData')
 const refreshGraphcoolUsers = require('./services/refreshGraphcoolUsers')
 const updateUserLastActiveAt = require('./services/updateUserLastActiveAt')
 const updateUserLastInvitedAt = require('./services/updateUserLastInvitedAt')
+const reduceChatQuota = require('./services/reduceChatQuota')
+
+const cryptoChart = require('./services/cryptoCharts')
 
 connectDB()
 
@@ -35,10 +40,13 @@ const handler = router(
   get('/', serviceStatus),
   get('/debugUsers', debugUsers),
   get('/debugUserUsageData', debugUserUsageData),
+  get('/reduceChatQuota/:forUserId', reduceChatQuota),  
   handleErrors(get('/getUsageData/:forUserId', getUsageData)),
   handleErrors(get('/getRandomUser/:forUserId', getRandomUser)),
   handleErrors(get('/refreshGraphcoolUsers', refreshGraphcoolUsers)),
   handleErrors(get('/updateUserLastActiveAt/:gcId', updateUserLastActiveAt)),
-  handleErrors(get('/updateUserLastInvitedAt/:gcId', updateUserLastInvitedAt)))
+  handleErrors(get('/updateUserLastInvitedAt/:gcId', updateUserLastInvitedAt)),
+  handleErrors(get('/cryptoChart/:id', cryptoCharts))
+)
 
 module.exports = cors(handler)

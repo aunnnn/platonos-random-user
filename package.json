@@ -16,7 +16,8 @@
     "micro": "^9.0.0",
     "micro-cors": "0.0.4",
     "microrouter": "^2.2.3",
-    "mongoose": "^4.12.0"
+    "mongoose": "^4.12.0",
+    "node-fetch": "^1.7.3"
   },
   "devDependencies": {
     "micro-dev": "^1.2.3"
